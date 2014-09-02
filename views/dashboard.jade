@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{user.displayname}'s Dashboard
+  h3 Add a post
+  form(action="/add_post" method="post")
+    input(type="hidden", name="_csrf" value="#{csrf}")
+    p Title
+    input(type="text" name="title")
+    p Body
+    textarea(name="body")
+    br
+    input(type="submit" value="Add")
+  hr
+  each post in user.posts.reverse()
+    h4= post.title
+    span by #{post.author} #{format_date(post.date)}
+    p= post.body

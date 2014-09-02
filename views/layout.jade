@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+    style.
+      ul li {
+        list-style-type: none;
+        display: inline;
+        padding-left: 10px;
+      }
+  body
+    h3 Pressurize
+    if user
+      ul
+        li
+          a(href="/") Home
+        li
+          a(href="https://github.com/CreaturePhil/pressurize" target="_blank") Contribute
+        li
+          a(href="/dashboard") Dashboard
+        li
+          a(href="/account") Account Settings
+        li
+          a(href="/user/#{user.username}") Profile
+        li 
+          a(href="/logout") Logout
+    else
+      ul
+        li
+          a(href="/") Home
+        li 
+          a(href="/register") Register
+        li
+          a(href="/login") Login
+    hr
+    if flash
+      each f in flash
+        b= f
+    block content

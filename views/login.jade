@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  form(action="/login" method="post")
+    input(type="hidden", name="_csrf" value="#{csrf}")
+    p Username
+    input(type="text" name="username")
+    p Password
+    input(type="password" name="password")
+    br
+    input(type="submit" value="Submit")

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 #{user.displayname}'s Dashboard
+  h3 Add a post
+  form(action="/add_post" method="post")
+    input(type="hidden", name="_csrf" value="#{csrf}")
+    p Title
+    input(type="text" name="title")
+    p Body
+    textarea(name="body")
+    br
+    input(type="submit" value="Add")
+  hr
+  div#posts
+  script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  script(src="/javascripts/main.js")

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  if name.avatar
+    img(src="#{name.avatar}" alt="profile avatar" width="480" height="360")
+  h1 #{name.displayname}'s Profile
+  p Joined on #{format_date(name.date)}
+  if name.location
+    p= name.location
+  if name.about
+    p= name.about
+  if name.twitter
+    a(href="https://twitter.com/#{name.twitter}" target="_blank") https://twitter.com/#{name.twitter}
+    br
+  if name.github
+    a(href="https://github.com/#{name.github}" target="_blank") https://github.com/#{name.github}
+    br
+  hr
+  h2 Postings
+  each post in name.posts
+    h4= post.title
+    span posted #{diff_date(post.date)}
+    p= post.body
+

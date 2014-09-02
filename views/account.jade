@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1 Account Settings
+  form(action="/account" method="post")
+    input(type="hidden", name="_csrf" value="#{csrf}")
+    p Avatar - Copy and paste a .png, .jpg, or .gif link for you avatar. If you want to upload a file, we recommend you use <a href="https://imgur.com/" target="_blank">imgur</a> and paste the image link here.
+    if user.avatar
+      img(src="#{user.avatar}" alt="user's profile image" width="480" height="360")
+      br
+    else
+      p You currently have no avatar.
+    input(type="text" name="avatar")
+    strong= avatar
+    p Change Username - http://pressurize.herokuapp.com/user/#{user.displayname}
+    input(type="text" name="username")
+    strong= username
+    if user.location
+      p Location - #{user.location}
+    else
+      p Location - None
+    input(type="text" name="location")
+    strong= location
+    p About
+    textarea(name="about")
+    strong= about
+    p Twitter - https://twitter.com/#{user.twitter}
+    input(type="text" name="twitter")
+    strong= twitter
+    p Github - https://github.com/#{user.github}
+    input(type="text" name="github")
+    strong= github
+    p Change Password
+    input(type="password" name="password")
+    strong= password
+    br
+    input(type="submit" value="Save Changes")
